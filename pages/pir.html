@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sensor Spotlight: PIR Motion Sensor</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom styles for the Inter font and overall body */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f0f4f8; /* Light gray background */
+        color: #333;
+      }
+      /* Style for a clean, rounded container */
+      .card-container {
+        background-color: #ffffff;
+        border-radius: 12px; /* Rounded corners */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+        overflow: hidden;
+      }
+      /* Responsive image styling */
+      .sensor-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px; /* Slightly rounded image corners */
+        object-fit: cover; /* Ensures image covers area without distortion */
+      }
+      /* Button styling */
+      .btn-primary {
+        background-color: #3b82f6; /* Blue */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background-color 0.2s ease;
+      }
+      .btn-primary:hover {
+        background-color: #2563eb; /* Darker blue on hover */
+      }
+      .btn-secondary {
+        background-color: #6b7280; /* Gray */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background-color 0.2s ease;
+      }
+      .btn-secondary:hover {
+        background-color: #4b5563; /* Darker gray on hover */
+      }
+    </style>
+  </head>
+  <body class="p-4 sm:p-6 md:p-8 flex items-center justify-center min-h-screen">
+    <div class="card-container w-full max-w-4xl mx-auto my-8 p-6 sm:p-8">
+      <header class="text-center mb-8">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-700 mb-2">
+          Sensor Spotlight
+        </h1>
+        <p class="text-lg text-gray-600">
+          Detailed Information on the PIR Sensor
+        </p>
+      </header>
+
+      <main class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Sensor Image Section -->
+        <section class="flex flex-col items-center">
+          <h2
+            class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 text-center"
+          >
+          PIR Motion Sensor
+          </h2>
+          
+          <img
+            id="sensorImage"
+            src="../images/pir.png"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/DDC1FF/000000?text=PIR+Sensor+Image';"
+            alt="PIR Motion Sensor"
+            class="sensor-image mb-4 shadow-md"
+          />
+          <img
+          id="sensorImage"
+          src="../images/pir2.png"
+          onerror="this.onerror=null;this.src='https://placehold.co/600x400/DDC1FF/000000?text=PIR+Sensor+Image';"
+          alt="PIR Motion Sensor"
+          class="sensor-image mb-4 shadow-md"
+        />
+          <p class="text-sm text-gray-500 italic">
+            Detects infrared light emitted by moving objects.
+          </p>
+        </section>
+
+        <!-- Sensor Information Section -->
+        <section class="text-gray-700">
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3">
+            Key Information
+          </h3>
+          <ul class="list-disc list-inside space-y-2 mb-6">
+            <li>
+                <strong>Type:</strong> Passive Infrared (PIR) Sensor
+            </li>
+            <li>
+                <strong>Operating Voltage:</strong> 5V to 20V DC
+            </li>
+            <li>
+                <strong>Detection Angle:</strong> Typically 120 degrees
+            </li>
+            <li>
+                <strong>Detection Distance:</strong> Adjustable, usually 3 to 7 meters (10 to 23 feet)
+            </li>
+            <li>
+                <strong>Output:</strong> Digital (HIGH when motion detected, LOW otherwise)
+            </li>
+            <li>
+                <strong>Delay Time:</strong> Adjustable from 0.3s to 200s (or more)
+            </li>
+            <li>
+                <strong>Trigger Method:</strong> L (non-repeatable trigger) / H (repeatable trigger)
+            </li>
+        </ul>
+
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3">
+            About the PIR Sensor
+          </h3>
+          <p class="mb-4 leading-relaxed">
+            A PIR (Passive Infrared) sensor is an electronic sensor that measures infrared (IR) light radiating from objects in its field of view. It does not emit any energy itself, making it "passive." It's commonly used to detect human or animal movement.
+          </p>
+          <p class="mb-4 leading-relaxed">
+            The sensor consists of a pyroelectric sensor which detects levels of infrared radiation. When a warm body (like a person) passes by, it causes a change in the IR radiation, which the sensor detects. The sensor typically has two potentiometers for adjusting sensitivity and delay time, which controls how long the output remains HIGH after motion is detected.
+          </p>
+          <p class="mb-4 leading-relaxed">
+            PIR sensors are widely used in motion-activated lights, security alarm systems, automatic doors, and various home automation projects to detect presence.
+          </p>
+
+          <div class="mt-6 flex justify-center md:justify-start space-x-4">
+            <a href="https://www.sparkfun.com/datasheets/Sensors/Motion/SEN-08630-PIR.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary inline-block">
+                View Datasheet
+            </a>
+            </a>
+            <a href="../index.html" class="btn-secondary inline-block">
+              Back to Main Page
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="text-center text-gray-500 mt-12 text-sm">
+        <p>&copy; 2025 Sensor Spotlight. All rights reserved.</p>
+        <p>Created with learning in mind.</p>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("PIR Motion Sensor Page loaded successfully!");
+      });
+    </script>
+  </body>
+</html>

@@ -1,211 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHN TECHNOLOGY: Arduino Uno R3</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sensor Spotlight: Arduino Uno R3</title>
     <!-- Tailwind CSS CDN for easy styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom styles for the Inter font and overall body */
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* Light gray background */
-            color: #333;
-        }
-        /* Style for a clean, rounded container */
-        .card-container {
-            background-color: #ffffff;
-            border-radius: 12px; /* Rounded corners */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow */
-            overflow: hidden;
-        }
-        /* Responsive image styling */
-        .sensor-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px; /* Slightly rounded image corners */
-            object-fit: cover; /* Ensures image covers area without distortion */
-        }
-        /* Button styling */
-        .btn-primary {
-            background-color: #3b82f6; /* Blue */
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: background-color 0.2s ease;
-        }
-        .btn-primary:hover {
-            background-color: #2563eb; /* Darker blue on hover */
-        }
-        /* Style for smaller sensor cards */
-        .mini-sensor-card {
-            background-color: #f9fafb; /* Lighter background */
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            padding: 12px;
-            text-align: center;
-            transition: transform 0.2s ease;
-        }
-        .mini-sensor-card:hover {
-            transform: translateY(-3px); /* Subtle lift on hover */
-        }
-        .mini-sensor-image {
-            width: 80px; /* Fixed width for consistency */
-            height: 80px; /* Fixed height */
-            border-radius: 50%; /* Circular images */
-            object-fit: cover;
-            margin: 0 auto 8px auto; /* Center and space below */
-            border: 2px solid #cbd5e1; /* Light border */
-        }
+      /* Custom styles for the Inter font and overall body */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f0f4f8; /* Light gray background */
+        color: #333;
+      }
+      /* Style for a clean, rounded container */
+      .card-container {
+        background-color: #ffffff;
+        border-radius: 12px; /* Rounded corners */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+        overflow: hidden;
+      }
+      /* Responsive image styling */
+      .sensor-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px; /* Slightly rounded image corners */
+        object-fit: cover; /* Ensures image covers area without distortion */
+      }
+      /* Button styling */
+      .btn-primary {
+        background-color: #3b82f6; /* Blue */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background-color 0.2s ease;
+      }
+      .btn-primary:hover {
+        background-color: #2563eb; /* Darker blue on hover */
+      }
+      /* Style for smaller sensor cards */
+      .mini-sensor-card {
+        background-color: #f9fafb; /* Lighter background */
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        padding: 12px;
+        text-align: center;
+        transition: transform 0.2s ease;
+      }
+      .mini-sensor-card:hover {
+        transform: translateY(-3px); /* Subtle lift on hover */
+      }
+      .mini-sensor-image {
+        width: 80px; /* Fixed width for consistency */
+        height: 80px; /* Fixed height */
+        border-radius: 50%; /* Circular images */
+        object-fit: cover;
+        margin: 0 auto 8px auto; /* Center and space below */
+        border: 2px solid #cbd5e1; /* Light border */
+      }
     </style>
-</head>
-<body class="p-4 sm:p-6 md:p-8 flex items-center justify-center min-h-screen">
-
+  </head>
+  <body class="p-4 sm:p-6 md:p-8 flex items-center justify-center min-h-screen">
     <div class="card-container w-full max-w-4xl mx-auto my-8 p-6 sm:p-8">
-        <header class="text-center mb-8">
-            <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-700 mb-2">PHN TECHNOLOGY</h1>
-            <p class="text-lg text-gray-600">Discovering the World of Sensors</p>
-        </header>
+      <header class="text-center mb-8">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-700 mb-2">
+          Sensor Spotlight
+        </h1>
+        <p class="text-lg text-gray-600">Discovering the World of Sensors</p>
+      </header>
 
-        <main class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-            <!-- Sensor Image Section -->
-            <section class="flex flex-col items-center">
-                <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 text-center">Arduino Uno R3</h2>
-                <img
-                    id="sensorImage"
-                    src="./images/arduino_uno_r3.png"
-                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';"
-                    alt="Arduino Uno R3 Board"
-                    class="sensor-image mb-4 shadow-md"
-                >
-                <img
-                    id="sensorImage"
-                    src="./images/Second.png"
-                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';"
-                    alt="Arduino Uno R3 Board"
-                    class="sensor-image mb-4 shadow-md"
-                >
-                <img
-                    id="sensorImage"
-                    src="./images/Microprocessor.jpg"
-                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';"
-                    alt="Arduino Uno R3 Board"
-                    class="sensor-image mb-4 shadow-md"
-                >
-                <p class="text-sm text-gray-500 italic">A versatile microcontroller board for electronics projects.</p>
-            </section>
-
-            <!-- Sensor Information Section -->
-            <section class="text-gray-700">
-                <h3 class="text-xl sm:text-2xl font-semibold mb-3">Key Information</h3>
-                <ul class="list-disc list-inside space-y-2 mb-6">
-                    <li>
-                        <strong>Type:</strong> Microcontroller Board
-                    </li>
-                    <li>
-                        <strong>Microcontroller:</strong> ATmega328P
-                    </li>
-                    <li>
-                        <strong>Operating Voltage:</strong> 5V
-                    </li>
-                    <li>
-                        <strong>Input Voltage (recommended):</strong> 7-12V
-                    </li>
-                    <li>
-                        <strong>Digital I/O Pins:</strong> 14 (of which 6 provide PWM output)
-                    </li>
-                    <li>
-                        <strong>Analog Input Pins:</strong> 6
-                    </li>
-                    <li>
-                        <strong>DC Current per I/O Pin:</strong> 20 mA
-                    </li>
-                    <li>
-                        <strong>Flash Memory:</strong> 32 KB (ATmega328P) of which 0.5 KB used by bootloader
-                    </li>
-                    <li>
-                        <strong>SRAM:</strong> 2 KB (ATmega328P)
-                    </li>
-                    <li>
-                        <strong>EEPROM:</strong> 1 KB (ATmega328P)
-                    </li>
-                    <li>
-                        <strong>Clock Speed:</strong> 16 MHz
-                    </li>
-                </ul>
-
-                <h3 class="text-xl sm:text-2xl font-semibold mb-3">About the Arduino Uno R3</h3>
-                <p class="mb-4 leading-relaxed">
-                    The Arduino Uno R3 is a popular open-source microcontroller board based on the ATmega328P. It's an excellent choice for beginners to electronics and coding, offering a simple and accessible platform for creating interactive projects. Its robust community support and vast library of examples make it ideal for learning and rapid prototyping.
-                </p>
-                <p class="mb-4 leading-relaxed">
-                    You can use the Arduino Uno R3 to read inputs from various sensors (e.g., light sensors, temperature sensors, motion sensors) and control outputs (e.g., motors, LEDs, displays). It connects to your computer via a USB cable and can be programmed using the Arduino IDE (Integrated Development Environment).
-                </p>
-
-                <div class="mt-6 flex justify-center md:justify-start">
-                    <a href="https://docs.arduino.cc/hardware/uno-rev3/" target="_blank" rel="noopener noreferrer" class="btn-primary inline-block">
-                        Learn More about Arduino Uno
-                    </a>
-                </div>
-            </section>
-        </main>
-
-        <!-- Section for 6 smaller sensor pictures and info -->
-        <section class="mt-12">
-            <h3 class="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-6">Other Popular Sensors</h3>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-                <!-- Sensor 1 -->
-                <div class="mini-sensor-card">
-                    <img src="https://placehold.co/80x80/FFDDC1/000000?text=DHT11" alt="DHT11 Temperature and Humidity Sensor" class="mini-sensor-image">
-                    <p class="font-semibold text-gray-800 text-sm mb-1">DHT11</p>
-                    <p class="text-xs text-gray-600">Measures temp & humidity.</p>
-                </div>
-                <!-- Sensor 2 -->
-                <div class="mini-sensor-card">
-                    <img src="https://placehold.co/80x80/C1FFDD/000000?text=HC-SR04" alt="HC-SR04 Ultrasonic Sensor" class="mini-sensor-image">
-                    <p class="font-semibold text-gray-800 text-sm mb-1">HC-SR04</p>
-                    <p class="text-xs text-gray-600">Measures distance with sound.</p>
-                </div>
-                <!-- Sensor 3 -->
-                <div class="mini-sensor-card">
-                    <img src="https://placehold.co/80x80/DDC1FF/000000?text=PIR" alt="PIR Motion Sensor" class="mini-sensor-image">
-                    <p class="font-semibold text-gray-800 text-sm mb-1">PIR Sensor</p>
-                    <p class="text-xs text-gray-600">Detects motion (infrared).</p>
-                </div>
-                <!-- Sensor 4 -->
-                <div class="mini-sensor-card">
-                    <img src="https://placehold.co/80x80/FFFFC1/000000?text=LDR" alt="LDR Light Sensor" class="mini-sensor-image">
-                    <p class="font-semibold text-gray-800 text-sm mb-1">LDR Sensor</p>
-                    <p class="text-xs text-gray-600">Measures light intensity.</p>
-                </div>
-                <!-- Sensor 5 -->
-                <div class="mini-sensor-card">
-                    <img src="https://placehold.co/80x80/C1FFFF/000000?text=MQ-2" alt="MQ-2 Gas Sensor" class="mini-sensor-image">
-                    <p class="font-semibold text-gray-800 text-sm mb-1">MQ-2 Gas Sensor</p>
-                    <p class="text-xs text-gray-600">Detects flammable gases.</p>
-                </div>
-                <!-- Sensor 6 -->
-                <div class="mini-sensor-card">
-                    <img src="https://placehold.co/80x80/FFC1C1/000000?text=Soil" alt="Soil Moisture Sensor" class="mini-sensor-image">
-                    <p class="font-semibold text-gray-800 text-sm mb-1">Soil Moisture</p>
-                    <p class="text-xs text-gray-600">Measures soil water content.</p>
-                </div>
-            </div>
+      <main class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Sensor Image Section -->
+        <section class="flex flex-col items-center">
+          <h2
+            class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 text-center"
+          >
+            Arduino Uno R3
+          </h2>
+          <img
+            id="sensorImage"
+            src="./images/arduino_uno_r3.png"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';"
+            alt="Arduino Uno R3 Board"
+            class="sensor-image mb-4 shadow-md"
+          />
+          <img
+            id="sensorImage"
+            src="./images/Second.png"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';"
+            alt="Arduino Uno R3 Board"
+            class="sensor-image mb-4 shadow-md"
+          />
+          <img
+            id="sensorImage"
+            src="./images/Microprocessor.jpg"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found';"
+            alt="Arduino Uno R3 Board"
+            class="sensor-image mb-4 shadow-md"
+          />
+          <p class="text-sm text-gray-500 italic">
+            A versatile microcontroller board for electronics projects.
+          </p>
         </section>
 
-        <footer class="text-center text-gray-500 mt-12 text-sm">
-            <p>&copy; 2025 PHN TECHNOLOGY. All rights reserved.</p>
-            <p>Created with learning in mind.</p>
-        </footer>
+        <!-- Sensor Information Section -->
+        <section class="text-gray-700">
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3">
+            Key Information
+          </h3>
+          <ul class="list-disc list-inside space-y-2 mb-6">
+            <li><strong>Type:</strong> Microcontroller Board</li>
+            <li><strong>Microcontroller:</strong> ATmega328P</li>
+            <li><strong>Operating Voltage:</strong> 5V</li>
+            <li><strong>Input Voltage (recommended):</strong> 7-12V</li>
+            <li>
+              <strong>Digital I/O Pins:</strong> 14 (of which 6 provide PWM
+              output)
+            </li>
+            <li><strong>Analog Input Pins:</strong> 6</li>
+            <li><strong>DC Current per I/O Pin:</strong> 20 mA</li>
+            <li>
+              <strong>Flash Memory:</strong> 32 KB (ATmega328P) of which 0.5 KB
+              used by bootloader
+            </li>
+            <li><strong>SRAM:</strong> 2 KB (ATmega328P)</li>
+            <li><strong>EEPROM:</strong> 1 KB (ATmega328P)</li>
+            <li><strong>Clock Speed:</strong> 16 MHz</li>
+          </ul>
+
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3">
+            About the Arduino Uno R3
+          </h3>
+          <p class="mb-4 leading-relaxed">
+            The Arduino Uno R3 is a popular open-source microcontroller board
+            based on the ATmega328P. It's an excellent choice for beginners to
+            electronics and coding, offering a simple and accessible platform
+            for creating interactive projects. Its robust community support and
+            vast library of examples make it ideal for learning and rapid
+            prototyping.
+          </p>
+          <p class="mb-4 leading-relaxed">
+            You can use the Arduino Uno R3 to read inputs from various sensors
+            (e.g., light sensors, temperature sensors, motion sensors) and
+            control outputs (e.g., motors, LEDs, displays). It connects to your
+            computer via a USB cable and can be programmed using the Arduino IDE
+            (Integrated Development Environment).
+          </p>
+
+          <div class="mt-6 flex justify-center md:justify-start">
+            <a
+              href="https://docs.arduino.cc/hardware/uno-rev3/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary inline-block"
+            >
+              Learn More about Arduino Uno
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <!-- Section for 6 smaller sensor pictures and info -->
+      <section class="mt-12">
+        <h3
+          class="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-6"
+        >
+          Other Popular Sensors
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <!-- Sensor 1: DHT11 -->
+          <a href="./pages/dht11.html" class="mini-sensor-card">
+            <img
+              src="https://placehold.co/80x80/FFDDC1/000000?text=DHT11"
+              alt="DHT11 Temperature and Humidity Sensor"
+              class="mini-sensor-image"
+            />
+            <p class="font-semibold text-gray-800 text-sm mb-1">DHT11</p>
+            <p class="text-xs text-gray-600">Measures temp & humidity.</p>
+          </a>
+          <!-- Sensor 2: HC-SR04 -->
+          <a href="./pages/hc-sr04.html" class="mini-sensor-card">
+            <img
+              src="https://placehold.co/80x80/C1FFDD/000000?text=HC-SR04"
+              alt="HC-SR04 Ultrasonic Sensor"
+              class="mini-sensor-image"
+            />
+            <p class="font-semibold text-gray-800 text-sm mb-1">HC-SR04</p>
+            <p class="text-xs text-gray-600">Measures distance with sound.</p>
+          </a>
+          <!-- Sensor 3: PIR Sensor -->
+          <a href="./pages/pir.html" class="mini-sensor-card">
+            <img
+              src="https://placehold.co/80x80/DDC1FF/000000?text=PIR"
+              alt="PIR Motion Sensor"
+              class="mini-sensor-image"
+            />
+            <p class="font-semibold text-gray-800 text-sm mb-1">PIR Sensor</p>
+            <p class="text-xs text-gray-600">Detects motion (infrared).</p>
+          </a>
+          <!-- Sensor 4: LDR Sensor -->
+          <a href="./pages/ldr.html" class="mini-sensor-card">
+            <img
+              src="https://placehold.co/80x80/FFFFC1/000000?text=LDR"
+              alt="LDR Light Sensor"
+              class="mini-sensor-image"
+            />
+            <p class="font-semibold text-gray-800 text-sm mb-1">LDR Sensor</p>
+            <p class="text-xs text-gray-600">Measures light intensity.</p>
+          </a>
+          <!-- Sensor 5: MQ-2 Gas Sensor -->
+          <a href="./pages/mq2.html" class="mini-sensor-card">
+            <img
+              src="https://placehold.co/80x80/C1FFFF/000000?text=MQ-2"
+              alt="MQ-2 Gas Sensor"
+              class="mini-sensor-image"
+            />
+            <p class="font-semibold text-gray-800 text-sm mb-1">
+              MQ-2 Gas Sensor
+            </p>
+            <p class="text-xs text-gray-600">Detects flammable gases.</p>
+          </a>
+          <!-- Sensor 6: Soil Moisture Sensor -->
+          <a href="./pages/soil-moisture.html" class="mini-sensor-card">
+            <img
+              src="https://placehold.co/80x80/FFC1C1/000000?text=Soil"
+              alt="Soil Moisture Sensor"
+              class="mini-sensor-image"
+            />
+            <p class="font-semibold text-gray-800 text-sm mb-1">
+              Soil Moisture
+            </p>
+            <p class="text-xs text-gray-600">Measures soil water content.</p>
+          </a>
+        </div>
+      </section>
+
+      <footer class="text-center text-gray-500 mt-12 text-sm">
+        <p>&copy; 2025 Sensor Spotlight. All rights reserved.</p>
+        <p>Created with learning in mind.</p>
+      </footer>
     </div>
 
     <script>
-        // Optional: JavaScript to dynamically load content or add interactivity later.
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Page loaded successfully!');
-        });
+      // Optional: JavaScript to dynamically load content or add interactivity later.
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log("Page loaded successfully!");
+      });
     </script>
-</body>
+  </body>
 </html>

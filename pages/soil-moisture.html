@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sensor Spotlight: Soil Moisture Sensor</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom styles for the Inter font and overall body */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f0f4f8; /* Light gray background */
+        color: #333;
+      }
+      /* Style for a clean, rounded container */
+      .card-container {
+        background-color: #ffffff;
+        border-radius: 12px; /* Rounded corners */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+        overflow: hidden;
+      }
+      /* Responsive image styling */
+      .sensor-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px; /* Slightly rounded image corners */
+        object-fit: cover; /* Ensures image covers area without distortion */
+      }
+      /* Button styling */
+      .btn-primary {
+        background-color: #3b82f6; /* Blue */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background-color 0.2s ease;
+      }
+      .btn-primary:hover {
+        background-color: #2563eb; /* Darker blue on hover */
+      }
+      .btn-secondary {
+        background-color: #6b7280; /* Gray */
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background-color 0.2s ease;
+      }
+      .btn-secondary:hover {
+        background-color: #4b5563; /* Darker gray on hover */
+      }
+    </style>
+  </head>
+  <body class="p-4 sm:p-6 md:p-8 flex items-center justify-center min-h-screen">
+    <div class="card-container w-full max-w-4xl mx-auto my-8 p-6 sm:p-8">
+      <header class="text-center mb-8">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-blue-700 mb-2">
+          Sensor Spotlight
+        </h1>
+        <p class="text-lg text-gray-600">
+          Detailed Information on the MQ-2 Sensor
+        </p>
+      </header>
+
+      <main class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <!-- Sensor Image Section -->
+        <section class="flex flex-col items-center">
+          <h2
+            class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 text-center"
+          >
+          Soil Moisture Sensor
+          </h2>
+        <img
+            id="sensorImage"
+            src="../images/soil-moisture.jpg"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFC1C1/000000?text=Soil+Moisture+Sensor+Image';"
+            alt="Soil Moisture Sensor"
+            class="sensor-image mb-4 shadow-md"
+        >
+        <img
+            id="sensorImage"
+            src="../images/soil-moisture2.jpg"
+            onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFC1C1/000000?text=Soil+Moisture+Sensor+Image';"
+            alt="Soil Moisture Sensor"
+            class="sensor-image mb-4 shadow-md"
+        >
+          <p class="text-sm text-gray-500 italic">
+            Measures the volumetric water content in soil.
+          </p>
+        </section>
+
+        <!-- Sensor Information Section -->
+        <section class="text-gray-700">
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3">
+            Key Information
+          </h3>
+          <ul class="list-disc list-inside space-y-2 mb-6">
+            <li>
+                <strong>Type:</strong> Resistive or Capacitive (most common low-cost are resistive)
+            </li>
+            <li>
+                <strong>Operating Voltage:</strong> 3.3V to 5V DC
+            </li>
+            <li>
+                <strong>Output:</strong> Analog (and often a digital threshold output)
+            </li>
+            <li>
+                <strong>Principle (Resistive):</strong> Measures electrical conductivity between two probes
+            </li>
+            <li>
+                <strong>Corrosion:</strong> Prone to corrosion over time with resistive sensors
+            </li>
+            <li>
+                <strong>Sensitivity:</strong> Adjustable via onboard potentiometer (for digital output)
+            </li>
+            <li>
+                <strong>Applications:</strong> Plant watering systems, smart farming
+            </li>
+        </ul>
+
+          <h3 class="text-xl sm:text-2xl font-semibold mb-3">
+            About the MQ-2 Sensor
+          </h3>
+          <p class="mb-4 leading-relaxed">
+            A soil moisture sensor is used to measure the water content in soil. These sensors typically come in two main types: resistive and capacitive. Most inexpensive sensors found in hobby kits are resistive, which measure the electrical conductivity between two probes inserted into the soil. More water in the soil means better conductivity and lower resistance.
+          </p>
+          <p class="mb-4 leading-relaxed">
+            The sensor module usually provides both an analog output (which can be read directly by an Arduino's analog pin to get a continuous reading of moisture levels) and a digital output. The digital output can be configured to trigger when the moisture level crosses a certain threshold, adjustable via an onboard potentiometer.
+          </p>
+          <p class="mb-4 leading-relaxed">
+            While resistive sensors are simple and affordable, they can corrode over time due to electrolysis. Capacitive sensors are generally more durable as they don't have exposed electrodes. Soil moisture sensors are widely used in automated plant watering systems, smart agriculture, and environmental monitoring.
+          </p>
+
+          <div class="mt-6 flex justify-center md:justify-start space-x-4">
+            <a href="https://lastminuteengineers.com/wp-content/uploads/2019/07/Soil-Moisture-Sensor-Datasheet.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary inline-block">
+                View Datasheet
+            </a>
+            </a>
+            <a href="../index.html" class="btn-secondary inline-block">
+              Back to Main Page
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="text-center text-gray-500 mt-12 text-sm">
+        <p>&copy; 2025 Sensor Spotlight. All rights reserved.</p>
+        <p>Created with learning in mind.</p>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log('Soil Moisture Sensor Page loaded successfully!');
+      });
+    </script>
+  </body>
+</html>
